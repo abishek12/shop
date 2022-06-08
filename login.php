@@ -16,6 +16,7 @@ if(isset($_POST['l_btn'])){
         $db_password = $row['password'];
         $enc_password = md5($password);
         $enc_password_substr = substr($enc_password,0,16);
+        $role = $row['role'];
 
 
 
@@ -23,6 +24,7 @@ if(isset($_POST['l_btn'])){
             session_start();
             $_SESSION['username'] = $db_username;
             $_SESSION['email'] = $email;
+            $_SESSION['role'] = $role;
             $_SESSION['state'] = TRUE;
             header("Location: dashboard/");
         }else{
@@ -59,7 +61,11 @@ if(isset($_POST['l_btn'])){
                     </small>
                 </p>
                 <div class="card-footer">
-                    <p><a href="register.php" class="text-reset">Create a new account</a></p>
+                    <p>
+                        <a href="register.php" class="text-reset">Create a new account</a>
+                        <a href="index.php" class="text-reset float-end">Back to Home</a>
+                </p>
+                
                 </div>
             </div>
         </div>

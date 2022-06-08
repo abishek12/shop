@@ -42,6 +42,11 @@
                 </div>
             </li>
 
+            <?php
+
+            if(!empty(($_SESSION['role']) == "admin")){ ?>
+
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -73,4 +78,10 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>WebSite</span></a>
             </li>
+
+<?php
+            }
+            ?>
+
+            
         </ul>

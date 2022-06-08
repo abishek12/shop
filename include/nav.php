@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <?php 
-          if(!empty($_SESSION['status'])){ ?>
+          if(!empty($_SESSION['state'])){ ?>
           <li class="nav-item">
           <a class="nav-link" href="dashboard/">Profile</a>
         </li>

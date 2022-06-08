@@ -57,6 +57,7 @@ if(isset($_POST['r_btn'])){
                 <div class="card-footer">
                     <p>
                         <a href="login.php" class="text-reset">Back to login</a>
+                        <a href="index.php" class="text-reset float-end">Back to Home</a>
                     </p>
                 </div>
             </div>

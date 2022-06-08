@@ -36,7 +36,15 @@ if(isset($_GET['details'])){
                 <!-- hide this -->
                 <input type="number" name="product_price" hidden value="<?php echo $price; ?>" id="">
                 <input type="number" name="product_quantity" min=0 class="form-control" value="0">
+                <?php
+                if(!empty($_SESSION['state'])){ ?>
                 <input type="submit" name="add_to_cart" class="btn btn-md btn-primary mt-4" value="Add to Cart">
+                <?php
+                }else{ ?>
+                <input type="submit" name="add_to_cart" class="btn btn-md btn-primary mt-4" value="Add to Cart" disabled>
+                <?php
+                }
+                ?>
             </div>
         </div>
         <h4 class="mt-5 text-center">Description</h4>

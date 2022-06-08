@@ -1,11 +1,9 @@
 <?php
-
-session_start();
+require_once "include/header.php";
 if(!empty($_SESSION['state'])){ ?>
 
-
 <?php 
-require_once "include/header.php";
+
 ?>
 
 <body id="page-top">

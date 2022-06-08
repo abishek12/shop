@@ -1,4 +1,9 @@
 <?php require_once "include/header.php"; ?>
+<?php
+if(!empty($_SESSION['state'])){
+    ?>
+
+
 <?php require_once "include/nav.php"; ?>   
 
 <!-- add to card function -->
@@ -104,3 +109,13 @@ if(isset($_POST['cart_delete'])){
 
 
 <?php require_once "include/footer.php"; ?>
+
+
+<?php
+}else{
+    ?>
+     <h3>You have no permission to access. <span><a href="login.php">Login</a></span></h3>
+    <?php
+}
+
+?>
