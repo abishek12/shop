@@ -81,7 +81,7 @@
                                         <td><?php echo substr($description, 0, 200); ?></td>
                                         <td><?php echo $price; ?></td>
                                         <td>
-                                        <a href="product.php?edit=<?php echo $id; ?>">edit</a>
+                                        <a href="edit_product.php?update_prod=<?php echo $id; ?>">edit</a>
                                             <a href="product.php?delete=<?php echo $id; ?>">Delete</a>
                                         </td>
                                     </tr>
