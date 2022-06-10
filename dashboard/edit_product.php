@@ -54,7 +54,7 @@ if(!empty($_SESSION['state'])){ ?>
                     $price = $_POST['price'];
                     $filename = $_FILES["uploadfile"]["name"];
                     $tempname = $_FILES["uploadfile"]["tmp_name"];    
-                        $folder = "img/product/".$filename;
+                        $folder = "../img/product/".$filename;
                   
                         // Get all the submitted data from the form
                         $sql = "update product set title='$title', slug='$slug', category='$category', content='$shortDescription', description='$description', price='$price', image='$filename' where id='$id'";
