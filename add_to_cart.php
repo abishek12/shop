@@ -48,6 +48,8 @@ if(isset($_POST['cart_delete'])){
 
 <div class="price-section">
     <?php 
+    $final_calculate = [];
+    
          $username = $_SESSION['email'];
          $sql = "select * from cart where username='$username'";
          $query = mysqli_query($connection, $sql);
@@ -56,9 +58,12 @@ if(isset($_POST['cart_delete'])){
              $price = $row['price'];
              $quantity = $row['quantity'];
              $amount = $price * $quantity;
+             array_push($final_calculate, $amount);
               ?>
 <p class="float-end">
-        Total Price : <span class="font-weight-bold">Rs. <?php echo $amount;  ?></span>
+        Total Price : <span class="font-weight-bold">Rs. <?php 
+
+          ?></span>
     </p>
              <?php
         }
@@ -78,13 +83,15 @@ if(isset($_POST['cart_delete'])){
                          $username = $_SESSION['email'];
                          $sql = "select * from cart where username='$username'";
                          $query = mysqli_query($connection, $sql);
+                         $item = [];
 
                          while($row = mysqli_fetch_assoc($query)){
                              $i++;
                              $id = $row['id'];
                              $title = $row['title'];
                              $quantity = $row['quantity'];
-
+                             array_push($item, $title);
+                             
                     ?>
                     <tr>
                         <td><?php echo $i; ?></td>
@@ -100,10 +107,14 @@ if(isset($_POST['cart_delete'])){
 
                     <?php
                          }
+                         
                     ?>
+                    
                 </tbody>
             </table>
-            <input type="submit" class="btn btn-warning float-end" value="Update" name="" id="">
+            <a href="checkout.php?product=<?php foreach($item as $item){
+                            print_r($item);
+                         } ?>" class='btn btn-success float-end'>Checkout</a>
     </div>
 </div>
 

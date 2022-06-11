@@ -33,19 +33,16 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Shop</span>
                 </a>
+                <?php
+            if(!empty(($_SESSION['role']) == "admin")){ ?>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="product.php">Products</a>
-                        <a class="collapse-item" href="cards.html">View All Products</a>
+                        <a class="collapse-item" href="order.php">Order</a>
                     </div>
                 </div>
             </li>
-
-            <?php
-
-            if(!empty(($_SESSION['role']) == "admin")){ ?>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -72,16 +69,23 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
+<?php
+            }else{ ?>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="cart.php">Cart</a>
+                        <a class="collapse-item" href="order.php">MyOrder</a>
+                    </div>
+                </div>
+            </li>
+            <?php
+            }
+            ?>
+             <!-- Nav Item - Charts -->
+             <li class="nav-item">
                 <a class="nav-link" href="../">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>WebSite</span></a>
             </li>
-
-<?php
-            }
-            ?>
-
-            
         </ul>

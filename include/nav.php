@@ -22,9 +22,14 @@
          }
         ?>
       </ul>
-      <a href="add_to_cart.php" class="text-reset">
-          <img src="assets/icons/cart.png" alt="" width="24" height="24">
-      </a>
+      <?php
+          if(!empty($_SESSION['state'])){ ?>
+            <a href="dashboard/cart.php" class="text-reset">
+              <img src="assets/icons/cart.png" alt="" width="24" height="24">
+            </a>
+          <?php
+          }
+      ?>
     </div>
   </div>
 </nav>

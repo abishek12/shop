@@ -28,9 +28,6 @@
                            Rs. <?php echo $price; ?>
                        </h6>
                        <a href="details.php?details=<?php echo $slug; ?>" class="btn btn-sm btn-primary">More</a>
-                       <a href="" class="btn btn-sm btn-info float-end">
-                            <img src="assets/icons/cart.png" alt="" width="24" height="24">
-                        </a>
                     </div>
                     <div class="card-footer">
                         

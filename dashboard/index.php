@@ -2,10 +2,6 @@
 require_once "include/header.php";
 if(!empty($_SESSION['state'])){ ?>
 
-<?php 
-
-?>
-
 <body id="page-top">
 
 <!-- Page Wrapper -->
