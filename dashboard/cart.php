@@ -38,6 +38,37 @@ if(!empty($_SESSION['state'])){ ?>
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                 </div>
+                <!-- add to card function -->
+<?php
+if(isset($_POST['add_to_cart'])){
+    $product_id = $_POST['product_id'];
+    $product_quantity = $_POST['product_quantity'];
+    $product_price = $_POST['product_price'];
+    $username = $_SESSION['email'];
+
+    if($product_quantity == 0){
+        echo "Quantity cannot be less than 0";
+    }else{
+        $sql = "INSERT INTO cart(title, quantity, username, price) values('$product_id','$product_quantity', '$username', '$product_price')";
+        $query = mysqli_query($connection, $sql);
+        if($query){
+            echo "Added to cart";
+        }else{
+            echo "Failed to added";
+        }
+    }
+}
+?>
+                <?php
+                    if(isset($_POST['cart_delete'])){
+                        $id = $_POST['id'];
+                        $query = mysqli_query($connection, "delete from cart where id='$id'");
+
+                        if($query){
+                           echo "<script>alert('Cart Item has been deleted')</script>";
+                        }
+                    }
+                ?>
 
                 <table class="table table-bordered table-hover table-striped text-center">
                 <thead>
@@ -59,7 +90,7 @@ if(!empty($_SESSION['state'])){ ?>
                              $id = $row['id'];
                              $title = $row['title'];
                              $quantity = $row['quantity'];
-                             array_push($item, $title);
+                             array_push($item, $title . ", ");
                              
                     ?>
                     <tr>
@@ -67,7 +98,7 @@ if(!empty($_SESSION['state'])){ ?>
                         <td><?php echo $title; ?></td>
                         <td><?php echo $quantity; ?></td>
                         <td>
-                            <form action="add_to_cart.php" method="post">
+                            <form action="cart.php" method="post">
                                 <input type="text" value='<?php echo $id; ?>' name="id" id="" hidden>
                                 <input type="submit" class="btn btn-sm btn-danger" value="Delete" name="cart_delete" id="">
                             </form>

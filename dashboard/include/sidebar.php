@@ -61,6 +61,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="user.php">User</a>
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="../login.php">Login</a>
                         <a class="collapse-item" href="../register.php">Register</a>

@@ -15,8 +15,9 @@ if(isset($_POST['check_email']))
 
     if(isset($_POST['update_pass'])){
         $pass = $_POST['pass'];
+        $enc_pass = md5($pass);
 
-        $query = mysqli_query($connection, "update user set password='$pass' where email='$email'");
+        $query = mysqli_query($connection, "update user set password='$enc_pass' where email='$email'");
         if($query){
             header("Location: index.php");
         }

@@ -18,7 +18,7 @@ if(isset($_GET['details'])){
     $image = $row['image'];
 }
 ?>
-<form action="add_to_cart.php" method="post">
+<form action="dashboard/cart.php" method="post">
 <div class="section mt-4">
     <div class="container">
         <h2>Product Details</h2>

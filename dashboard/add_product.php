@@ -53,7 +53,7 @@ error_reporting(0);
     $price = $_POST['price'];
     $filename = $_FILES["uploadfile"]["name"];
     $tempname = $_FILES["uploadfile"]["tmp_name"];    
-        $folder = "../assets/img/product/".$filename;
+        $folder = "../assets/img/".$filename;
   
         // Get all the submitted data from the form
         $sql = "INSERT INTO product (title, slug, category, content, description, price, image) VALUES ('$title','$slug','$category','$shortDescription','$description','$price','$filename')";

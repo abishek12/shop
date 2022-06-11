@@ -37,50 +37,56 @@
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
 
-                    <?php
-                        if(isset($_GET['delete'])){
-                            $delete_id = $_GET['delete'];
-                            $delete_product_sql = "delete from product where id='$delete_id';";
-                            $delete_product_query = mysqli_query($connection, $delete_product_sql);
-
-                            if($delete_product_query){
-                                echo "<br>";
-                                echo "Your item has been deleted";
-                            }else{
-                                echo "<br>";
-                                echo "Something went wrong";
-                            }
-                        }
-                    ?>
-
                     <div class="section">
                         <table class='table table-bordered'>
                             <thead>
-                                <th>Title</th>
-                                <th>Short Description</th>
-                                <th>Description</th>
-                                <th>Price</th>
+                                <th>Email</th>
+                                <th>Product Name</th>
+                                <th>City</th>
+                                <th>Street</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Time</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
                                 <?php 
-                                    $sql = "select * from product";
+                                if($_SESSION['state'] == 'customer'){
+                                    $email = $_SESSION['email'];
+                                    $sql = "select * from checkout where email='$email'";
+                                    
+                                }else{
+                                    $sql  = "select * from checkout";   
+                                }
+                                    
                                     $query = mysqli_query($connection, $sql);
+                                    $i = 0;
                                     while($row = mysqli_fetch_assoc($query)){
+                                        $i++;
                                         $id = $row['id'];
-                                        $title = $row['title'];
-                                        $shortDescription = $row['content'];
-                                        $description = $row['description'];
-                                        $price = $row['price']; 
+                                        $email = $row['email'];
+                                        $product_name = $row['product_name'];
+                                        $city = $row['city'];
+                                        $street = $row['street']; 
+                                        $contact = $row['contact'];
+                                        $status = $row['status'];
+                                        $date = $row['date'];
+                                        $time = $row['time'];
                                     ?>
+                                    
                                     <tr>
-                                        <td><?php echo $title; ?></td>
-                                        <td><?php echo substr($shortDescription, 0, 150); ?></td>
-                                        <td><?php echo substr($description, 0, 200); ?></td>
-                                        <td><?php echo $price; ?></td>
+                                        <td><?php echo $email; ?></td>
+                                        <td><?php echo $product_name; ?></td>
+                                        <td><?php echo $city; ?></td>
+                                        <td><?php echo $street; ?></td>
+                                        <td><?php echo $contact; ?></td>
+                                        <td><?php echo $status; ?></td>
+                                        <td><?php echo $date; ?></td>
+                                        <td><?php echo $time; ?></td>
                                         <td>
-                                        <a href="edit_product.php?update_prod=<?php echo $id; ?>">edit</a>
-                                            <a href="product.php?delete=<?php echo $id; ?>">Delete</a>
+                                        <a href="edit_order.php?edit=<?php echo $id; ?>">edit</a>
+                                            
                                         </td>
                                     </tr>
                                 <?php

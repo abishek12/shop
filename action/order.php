@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../db.php';
 
 if(isset($_POST['order_btn'])){
@@ -16,7 +16,12 @@ if(isset($_POST['order_btn'])){
     $order_sql = "insert into checkout(email,product_name, city, street, contact, date, time) values('$email','$product_name','$city','$street','$phone','$date','$time')";
     $order_query = mysqli_query($connection, $order_sql);
 
+    function delete(){
+        $query = mysqli_query("delete from cart where username='$email';");
+    }
+
     if($order_query){
+        delete();
         header("Location: ../index.php");
     }else{
         echo 'Something went wrong';

@@ -39,13 +39,13 @@ if(!empty($_SESSION['state'])){ ?>
                     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                 </div>
                 <?php
+                    if(isset($_GET['update_prod'])){
                     $id = $_GET['update_prod'];
-                    echo $id;
-                ?>
-                <?php
-                
+                    ?>
+
+                    <?php
+                    
                 if (isset($_POST['upload'])) {
-                    echo $id;
                     $title = $_POST['title'];
                     $slug = $_POST['slug'];
                     $category = $_POST['category'];
@@ -54,7 +54,7 @@ if(!empty($_SESSION['state'])){ ?>
                     $price = $_POST['price'];
                     $filename = $_FILES["uploadfile"]["name"];
                     $tempname = $_FILES["uploadfile"]["tmp_name"];    
-                        $folder = "../img/product/".$filename;
+                        $folder = "../assets/img/".$filename;
                   
                         // Get all the submitted data from the form
                         $sql = "update product set title='$title', slug='$slug', category='$category', content='$shortDescription', description='$description', price='$price', image='$filename' where id='$id'";
@@ -64,11 +64,12 @@ if(!empty($_SESSION['state'])){ ?>
                           
                         // Now let's move the uploaded image into the folder: image
                         if (move_uploaded_file($tempname, $folder))  {
-                           return "Upload success";
+                           echo "<script>alert('Your $title has been updated')</script>";
                         }else{
                             return die("Error is: ". mysqli_error());
                       }
                   }
+                }
                 ?>
                 
                 <?php
@@ -85,7 +86,7 @@ if(!empty($_SESSION['state'])){ ?>
                         }
                     }
                 ?>
-                <form action="edit_product.php" method="post" enctype="multipart/form-data" autocomplete="off">
+                <form action="edit_product.php?update_prod=<?php echo $id; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
                             <div class="form-group">
                                 <label for="">Title</label>
                                 <input type="text" class="form-control" name='title' value='<?php echo $title; ?>'>
